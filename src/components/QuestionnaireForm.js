@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import questionsData from './questions.json';
-import * as Yup from 'yup';
 
 const QuestionnaireForm = ({ onSubmit }) => {
     const [responses, setResponses] = useState({});
@@ -59,17 +58,18 @@ const QuestionnaireForm = ({ onSubmit }) => {
 
         <div className="navigation-buttons">
           {sectionIndex > 0 && (
-            <button type="button" onClick={handlePreviousSection}>
+            <button className="questionBtn" type="button" onClick={handlePreviousSection}>
               Previous Section
             </button>
           )}
-          {sectionIndex < questionsData.sections.length - 1 ? (
-            <button type="button" onClick={handleNextSection}>
+          {sectionIndex < questionsData.sections.length - 1 && (
+            <button className="questionBtn" type="button" onClick={handleNextSection}>
               Next Section
             </button>
-          ) : (
-            <button type="submit">Submit</button>
           )}
+          {sectionIndex === questionsData.sections.length - 1 ? (
+            <button className="questionBtn" type="submit">Submit</button>
+          ) : null}
         </div>
       </form>
     </div>

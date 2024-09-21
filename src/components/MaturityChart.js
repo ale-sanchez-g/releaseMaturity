@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 const MaturityChart = ({ responses }) => {
     // Calculate the highest score for all the questions
-    const sectionPercentages = (8 * 3) * 4;
+    const sectionPercentages = (9 * 3) * 4;
 
     // Calculate the total score based on the responses
     let totalPercentage = 0;
@@ -69,7 +70,8 @@ const MaturityChart = ({ responses }) => {
           />
         </div>
       </div>
-    </div>
+        <button onClick={() => window.location.reload()}>Restart Questionnaire</button>
+      </div>
   );
 };
 

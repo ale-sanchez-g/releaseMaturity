@@ -19,27 +19,27 @@ const App = () => {
 
   return (
     <div className="App">
-      {showWelcomePage ? (
-        <div className='pop'>
-          <div className="welcome-page">
-            <div className="welcome-container">
-              <h1>Welcome!</h1>
-              <form onSubmit={handleCompanyNameSubmit}>
-                <label>
-                  Company Name:
-                  <input
-                    type="text"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    required
-                  />
-                </label>
-                <button type="submit">Start</button>
-              </form>
-            </div>
+    {showWelcomePage ? (
+      <div className='pop'>
+        <div className="welcome-page">
+          <div className="welcome-container">
+            <h1>Welcome!</h1>
+            <form onSubmit={handleCompanyNameSubmit}>
+              <label>
+                Company Name:
+                <input
+                  type="text"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  required
+                />
+              </label>
+              <button type="submit">Start</button>
+            </form>
           </div>
         </div>
-      ) : !responses ? (
+      </div>
+    ) : !responses ? (
         <QuestionnaireForm onSubmit={handleFormSubmit} />
       ) : (
         <MaturityChart responses={responses} />

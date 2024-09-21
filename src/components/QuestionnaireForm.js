@@ -33,25 +33,25 @@ const QuestionnaireForm = ({ onSubmit }) => {
     };
 
     return (
-        <div className="welcome-container">
-          <div>
-              {questionsData.sections.map((section, secIndex) => (
-                  <div key={secIndex} style={{ display: secIndex === sectionIndex ? 'block' : 'none' }}>
-                      <h2><strong>Section {secIndex+1}</strong></h2>
-                      <h2>{section.sectionTitle}</h2>
-                      {section.questions.map((question, quesIndex) => (
-                          <div key={quesIndex}>
-                              <label>{question.question}</label>
-                              <Select
-                                  options={question.options.map((option, index) => ({ value: index, label: option }))}
-                                  onChange={(selectedOption) => handleOptionChange(section.sectionTitle, quesIndex, selectedOption)}
-                              />
-                          </div>
-                      ))}
-                  </div>
-              ))}
-              <button onClick={handleNextSection}>Next Section</button>
-          </div>
+        <div>
+            {questionsData.sections.map((section, secIndex) => (
+                <div key={secIndex} style={{ display: secIndex === sectionIndex ? 'block' : 'none' }}>
+                    <h2><strong>Section {secIndex+1}</strong></h2>
+                    <h2>{section.sectionTitle}</h2>
+                    {section.questions.map((question, quesIndex) => (
+                        <div key={quesIndex}>
+                            <label>{question.question}</label>
+                            <Select
+                                options={question.options.map((option, index) => ({ value: index, label: option }))}
+                                onChange={(selectedOption) => handleOptionChange(section.sectionTitle, quesIndex, selectedOption)}
+                                className="custom-select"
+                                classNamePrefix="custom-select"
+                            />
+                        </div>
+                    ))}
+                </div>
+            ))}
+            <button onClick={handleNextSection}>Next Section</button>
         </div>
     );
 };

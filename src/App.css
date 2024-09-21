@@ -50,6 +50,7 @@
 .h2, h2 {
   font-size: calc(1.45rem + .9vw);
   letter-spacing: -1px;
+  margin: 10px 10px 10px 10px;
 }
 
 .h3, h3 {
@@ -245,4 +246,30 @@ strong {
   height: 100%;
   transition: width 0.4s ease;
   border-radius: 8px;
+}
+
+/* QuestionnaireForm.css */
+.custom-select__control {
+  background-color: lightblue;
+  border-color: blue;
+  min-height: 35px;
+  height: 35px;
+  box-shadow: none;
+}
+
+.custom-select__value-container {
+  height: 35px;
+  padding: 0 6px;
+}
+
+.custom-select__input {
+  margin: 0px;
+}
+
+.custom-select__indicator-separator {
+  display: none;
+}
+
+.custom-select__indicators {
+  height: 35px;
 }

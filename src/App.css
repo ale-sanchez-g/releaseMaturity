@@ -1,0 +1,48 @@
+.App {
+  font-family: Arial, sans-serif;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #82ca9d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #68b68a;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+.score-display {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background-color: rgba(25, 112, 222, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  transition: width 0.5s ease;
+}

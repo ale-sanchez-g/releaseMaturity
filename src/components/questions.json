@@ -1,0 +1,211 @@
+{
+    "sections": [
+      {
+        "sectionTitle": "Release Management Efficiency",
+        "questions": [
+          {
+            "question": "How frequently does your organisation experience delays in releases due to dependencies or resource issues?",
+            "scoreRange": [0, 5],
+            "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "How automated is your release pipeline?",
+            "scoreRange": [0, 5],
+            "options": ["Not at all", "Minimally", "Partially", "Mostly", "Fully Automated"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "How do you handle last-minute changes or fixes in the release process?",
+            "scoreRange": [0, 5],
+            "options": ["No process", "Ad-hoc", "Basic process", "Defined process", "Well-established process with rollback"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Manual Handoffs and Collaboration",
+        "questions": [
+          {
+            "question": "How often do manual handoffs cause delays or errors in your workflow?",
+            "scoreRange": [0, 5],
+            "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "Is there a collaborative environment between development, testing, and operations teams?",
+            "scoreRange": [0, 5],
+            "options": ["Not at all", "Rarely", "Sometimes", "Mostly", "Fully integrated"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "Do you have a standard process for handoffs between teams?",
+            "scoreRange": [0, 5],
+            "options": ["No process", "Ad-hoc", "Basic process", "Well-defined", "Fully automated"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Automation and CI/CD Adoption",
+        "questions": [
+          {
+            "question": "What percentage of your testing is automated?",
+            "scoreRange": [0, 5],
+            "options": ["0%", "1-20%", "21-50%", "51-80%", "81-100%"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "How integrated is CI/CD into your development process?",
+            "scoreRange": [0, 5],
+            "options": ["Not at all", "Minimal", "Partial", "Mostly", "Fully integrated"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "Do you have end-to-end automation for your deployments?",
+            "scoreRange": [0, 5],
+            "options": ["No automation", "Limited automation", "Partial automation", "Mostly automated", "Fully automated"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Fragmented Workflows",
+        "questions": [
+          {
+            "question": "How often do you face issues due to fragmented workflows across teams?",
+            "scoreRange": [0, 5],
+            "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "Are all teams aligned on a single workflow or process?",
+            "scoreRange": [0, 5],
+            "options": ["Not aligned", "Rarely aligned", "Sometimes aligned", "Mostly aligned", "Fully aligned"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "How integrated are your development tools across teams?",
+            "scoreRange": [0, 5],
+            "options": ["Not integrated", "Minimal integration", "Partial integration", "Mostly integrated", "Fully integrated"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Frequent Rollbacks and Failures",
+        "questions": [
+          {
+            "question": "How often do releases get rolled back due to failures?",
+            "scoreRange": [0, 5],
+            "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+            "doraMetric": "Change Failure Rate"
+          },
+          {
+            "question": "How robust is your rollback strategy?",
+            "scoreRange": [0, 5],
+            "options": ["No strategy", "Minimal", "Basic", "Advanced", "Fully automated"],
+            "doraMetric": "Mean Time to Restore"
+          },
+          {
+            "question": "Do you have automated testing and monitoring in place to detect failures early?",
+            "scoreRange": [0, 5],
+            "options": ["None", "Minimal", "Partial", "Mostly", "Fully automated"],
+            "doraMetric": "Mean Time to Restore"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Tool Chain Complexity",
+        "questions": [
+          {
+            "question": "How many tools do you use to manage your development and release process?",
+            "scoreRange": [0, 5],
+            "options": ["1-2", "3-5", "6-8", "9-12", "More than 12"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "Are your tools integrated and easy to manage?",
+            "scoreRange": [0, 5],
+            "options": ["Not integrated", "Minimal integration", "Partial integration", "Mostly integrated", "Fully integrated"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "How much overhead is required to maintain your toolchain?",
+            "scoreRange": [0, 5],
+            "options": ["None", "Minimal", "Moderate", "Significant", "High"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "Ownership and Governance",
+        "questions": [
+          {
+            "question": "How clear is the ownership of the release process across your teams?",
+            "scoreRange": [0, 5],
+            "options": ["Not clear", "Rarely clear", "Sometimes clear", "Mostly clear", "Very clear"],
+            "doraMetric": "Lead Time for Changes"
+          },
+          {
+            "question": "Do you have governance policies in place for releases?",
+            "scoreRange": [0, 5],
+            "options": ["No policies", "Minimal", "Basic", "Defined", "Comprehensive policies"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "How often are compliance and governance checks part of your release process?",
+            "scoreRange": [0, 5],
+            "options": ["Never", "Rarely", "Sometimes", "Often", "Always"],
+            "doraMetric": "Change Failure Rate"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "LaunchDarkly Integration",
+        "questions": [
+          {
+            "question": "How integrated is LaunchDarkly with your current release management tools?",
+            "scoreRange": [0, 5],
+            "options": ["Not integrated", "Minimal", "Partially", "Mostly", "Fully integrated"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "Do you have feature flags in place for all major releases?",
+            "scoreRange": [0, 5],
+            "options": ["No flags", "Minimal", "Partial", "Mostly", "Fully implemented"],
+            "doraMetric": "Change Failure Rate"
+          },
+          {
+            "question": "How well do you manage feature flags across environments?",
+            "scoreRange": [0, 5],
+            "options": ["No management", "Minimal", "Basic", "Advanced", "Fully automated"],
+            "doraMetric": "Mean Time to Restore"
+          }
+        ]
+      },
+      {
+        "sectionTitle": "LaunchDarkly at Scale",
+        "questions": [
+          {
+            "question": "How effectively can you deploy and manage LaunchDarkly across multiple environments?",
+            "scoreRange": [0, 5],
+            "options": ["Not effective", "Minimal", "Partially effective", "Mostly effective", "Fully effective"],
+            "doraMetric": "Deployment Frequency"
+          },
+          {
+            "question": "How much of your LaunchDarkly deployment process is automated?",
+            "scoreRange": [0, 5],
+            "options": ["None", "Minimal", "Partial", "Mostly", "Fully automated"],
+            "doraMetric": "Change Failure Rate"
+          },
+          {
+            "question": "Do you have a centralised system for managing feature flags at scale?",
+            "scoreRange": [0, 5],
+            "options": ["None", "Minimal", "Basic", "Advanced", "Fully centralised"],
+            "doraMetric": "Mean Time to Restore"
+          }
+        ]
+      }
+    ]
+  }

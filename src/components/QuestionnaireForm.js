@@ -1,82 +1,59 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
 import questionsData from './questions.json';
 
 const QuestionnaireForm = ({ onSubmit }) => {
     const [responses, setResponses] = useState({});
     const [sectionIndex, setSectionIndex] = useState(0);
-  
-    const handleOptionChange = (sectionTitle, questionIndex, selectedValue) => {
-      const section = questionsData.sections.find(section => section.sectionTitle === sectionTitle);
-      const question = section.questions[questionIndex];
-      const doraMetric = question.doraMetric;
-  
-      setResponses({
-        ...responses,
-        [sectionTitle]: {
-          ...responses[sectionTitle],
-          [questionIndex]: {
-            value: selectedValue,
-            doraMetric: doraMetric
-          }
-        }
-      });
+
+    const handleOptionChange = (sectionTitle, questionIndex, selectedOption) => {
+        const section = questionsData.sections.find(section => section.sectionTitle === sectionTitle);
+        const question = section.questions[questionIndex];
+        const doraMetric = question.doraMetric;
+
+        setResponses({
+            ...responses,
+            [sectionTitle]: {
+                ...responses[sectionTitle],
+                [questionIndex]: {
+                    value: selectedOption.value,
+                    doraMetric: doraMetric
+                }
+            }
+        });
     };
 
-  const handleNextSection = () => {
-    setSectionIndex((prevIndex) => Math.min(prevIndex + 1, questionsData.sections.length - 1));
-  };
+    const handleNextSection = () => {
+        if (sectionIndex < questionsData.sections.length - 1) {
+            setSectionIndex(sectionIndex + 1);
+        } else {
+            console.log(responses);
+            onSubmit(responses);
+        }
+    };
 
-  const handlePreviousSection = () => {
-    setSectionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit(responses); // Pass responses back to App.js
-  };
-
-  return (
-    <div className='welcome-container'>
-      <div className="questionnaire-form">
-        <h2><strong>Section {sectionIndex + 1}</strong></h2>
-        <h2>{questionsData.sections[sectionIndex].sectionTitle}</h2>
-        <form onSubmit={handleSubmit}>
-          {questionsData.sections[sectionIndex].questions.map((question, questionIndex) => (
-            <div className="question-block" key={questionIndex}>
-              <p>{question.question}</p>
-              <select
-                value={responses[questionsData.sections[sectionIndex].sectionTitle]?.[questionIndex] ?? ""}
-                onChange={(e) => handleOptionChange(questionsData.sections[sectionIndex].sectionTitle, questionIndex, e.target.value)}
-              >
-                <option value="" disabled>Select an option</option>
-                {question.options.map((option, optionIndex) => (
-                  <option key={optionIndex} value={optionIndex}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-
-          <div className="navigation-buttons">
-            {sectionIndex > 0 && (
-              <button className="questionBtn" type="button" onClick={handlePreviousSection}>
-                Previous Section
-              </button>
-            )}
-            {sectionIndex < questionsData.sections.length - 1 && (
-              <button className="questionBtn" type="button" onClick={handleNextSection}>
-                Next Section
-              </button>
-            )}
-            {sectionIndex === questionsData.sections.length - 1 ? (
-              <button className="questionBtn" type="submit">Submit</button>
-            ) : null}
+    return (
+        <div className="welcome-container">
+          <div>
+              {questionsData.sections.map((section, secIndex) => (
+                  <div key={secIndex} style={{ display: secIndex === sectionIndex ? 'block' : 'none' }}>
+                      <h2><strong>Section {secIndex+1}</strong></h2>
+                      <h2>{section.sectionTitle}</h2>
+                      {section.questions.map((question, quesIndex) => (
+                          <div key={quesIndex}>
+                              <label>{question.question}</label>
+                              <Select
+                                  options={question.options.map((option, index) => ({ value: index, label: option }))}
+                                  onChange={(selectedOption) => handleOptionChange(section.sectionTitle, quesIndex, selectedOption)}
+                              />
+                          </div>
+                      ))}
+                  </div>
+              ))}
+              <button onClick={handleNextSection}>Next Section</button>
           </div>
-        </form>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default QuestionnaireForm;

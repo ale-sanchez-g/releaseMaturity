@@ -36,42 +36,45 @@ const QuestionnaireForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="questionnaire-form">
-      <h2>Section {sectionIndex + 1}: {questionsData.sections[sectionIndex].sectionTitle}</h2>
-      <form onSubmit={handleSubmit}>
-        {questionsData.sections[sectionIndex].questions.map((question, questionIndex) => (
-          <div className="question-block" key={questionIndex}>
-            <p>{question.question}</p>
-            <select
-              value={responses[questionsData.sections[sectionIndex].sectionTitle]?.[questionIndex] ?? ""}
-              onChange={(e) => handleOptionChange(questionsData.sections[sectionIndex].sectionTitle, questionIndex, e.target.value)}
-            >
-              <option value="" disabled>Select an option</option>
-              {question.options.map((option, optionIndex) => (
-                <option key={optionIndex} value={optionIndex}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
+    <div className='welcome-container'>
+      <div className="questionnaire-form">
+        <h2><strong>Section {sectionIndex + 1}</strong></h2>
+        <h2>{questionsData.sections[sectionIndex].sectionTitle}</h2>
+        <form onSubmit={handleSubmit}>
+          {questionsData.sections[sectionIndex].questions.map((question, questionIndex) => (
+            <div className="question-block" key={questionIndex}>
+              <p>{question.question}</p>
+              <select
+                value={responses[questionsData.sections[sectionIndex].sectionTitle]?.[questionIndex] ?? ""}
+                onChange={(e) => handleOptionChange(questionsData.sections[sectionIndex].sectionTitle, questionIndex, e.target.value)}
+              >
+                <option value="" disabled>Select an option</option>
+                {question.options.map((option, optionIndex) => (
+                  <option key={optionIndex} value={optionIndex}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
 
-        <div className="navigation-buttons">
-          {sectionIndex > 0 && (
-            <button className="questionBtn" type="button" onClick={handlePreviousSection}>
-              Previous Section
-            </button>
-          )}
-          {sectionIndex < questionsData.sections.length - 1 && (
-            <button className="questionBtn" type="button" onClick={handleNextSection}>
-              Next Section
-            </button>
-          )}
-          {sectionIndex === questionsData.sections.length - 1 ? (
-            <button className="questionBtn" type="submit">Submit</button>
-          ) : null}
-        </div>
-      </form>
+          <div className="navigation-buttons">
+            {sectionIndex > 0 && (
+              <button className="questionBtn" type="button" onClick={handlePreviousSection}>
+                Previous Section
+              </button>
+            )}
+            {sectionIndex < questionsData.sections.length - 1 && (
+              <button className="questionBtn" type="button" onClick={handleNextSection}>
+                Next Section
+              </button>
+            )}
+            {sectionIndex === questionsData.sections.length - 1 ? (
+              <button className="questionBtn" type="submit">Submit</button>
+            ) : null}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

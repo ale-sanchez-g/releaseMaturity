@@ -1,5 +1,92 @@
+:root {
+  --bg-gradient: linear-gradient(245deg, rgba(23,43,77,1) 0%, rgba(19,21,30,1) 100%);
+  --bgColor: 19, 21, 30;
+  --color-midnight: #13151E;
+  --color-primary: #172B4D;
+  --color-accent-crimson: #D81E5B;
+  --color-accent-blue: #1970DE;
+  --color-accent-green: #01B75C;
+  --color-accent-amber: #FFB649;
+  --color-accent-orange: #F3772B;
+  --color-black: #000000;
+  --color-black-75: rgba(0, 0, 0, .75);
+  --color-black-50: rgba(0, 0, 0, .50);
+  --color-black-25: rgba(0, 0, 0, .25);
+  --color-black-10: rgba(0, 0, 0, .10);
+  --color-white: #FFFFFF;
+  --color-white-75: rgba(255, 255, 255, .75);
+  --color-white-50: rgba(255, 255, 255, .50);
+  --color-white-25: rgba(255, 255, 255, 0.49);
+  --color-dark-grey: #41454C;
+  --color-grey: #F0F3F7;
+  --color-light-grey: #F8F9FA;
+  --color-blue-grey: #D6DFE4;
+  --color-aqua: #CFF2FA;
+  --color-light-blue: #E3EEFB;
+  --color-rose: #FEE8E6;
+  --color-sand: #FFE6BC;
+  --border-color: rgba(19, 21, 30, .10);
+  --font-size-xs: .75rem;
+  --font-size-sm: .85rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.15rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 1.75rem;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.h1, h1 {
+  font-size: calc(1.375rem + 1.5vw);
+  letter-spacing: -1px;
+}
+
+.h2, h2 {
+  font-size: calc(1.45rem + .9vw);
+  letter-spacing: -1px;
+}
+
+.h3, h3 {
+  font-size: calc(1.3rem + .6vw);
+}
+
+.h4, h4 {
+  font-size: calc(1.275rem + .3vw);
+}
+
+.h5, h5 {
+  font-size: 1.25rem;
+}
+
+.h6, h6 {
+  font-size: 1rem;
+}
+
 .App {
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.pop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other content */
 }
 
 label {
@@ -15,7 +102,7 @@ input, select {
 
 button {
   padding: 10px 20px;
-  background-color: #82ca9d;
+  background-color: var(--color-primary);
   border: none;
   color: white;
   cursor: pointer;
@@ -23,26 +110,116 @@ button {
 }
 
 button:hover {
-  background-color: #68b68a;
+  background-color: var(--color-accent-crimson);
 }
 
 div {
   margin-bottom: 15px;
 }
 
-.score-display {
-  margin-top: 20px;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 30px;
-  background-color: rgba(25, 112, 222, 0.2);
+select {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  overflow: hidden;
+  background-color: var(--color-light-grey);
+  color: var(--color-primary);
+  font-size: var(--font-size-base);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.progress {
+select:hover {
+  border-color: var(--color-accent-crimson);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+select:focus {
+  border-color: var(--color-accent-crimson);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+@media (min-width: 600px) {
+  select {
+    width: 75%;
+  }
+  .App {
+    padding-left: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  select {
+    width: 50%;
+  }
+  .App {
+    padding-left: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  select {
+    width: 33%;
+  }
+  .App {
+    padding-left: 0;
+  }
+}
+
+/*  */
+
+.welcome-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 100%;
-  transition: width 0.5s ease;
+}
+
+.welcome-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.welcome-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.welcome-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-container label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.welcome-container input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.welcome-container button {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #1877f2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcome-container button:hover {
+  background-color: #165cdb;
 }

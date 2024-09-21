@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import questionsData from './questions.json';
+import * as Yup from 'yup';
 
 const QuestionnaireForm = ({ onSubmit }) => {
     const [responses, setResponses] = useState({});

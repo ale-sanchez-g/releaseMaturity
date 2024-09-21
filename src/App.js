@@ -1,23 +1,48 @@
 import React, { useState } from 'react';
 import QuestionnaireForm from './components/QuestionnaireForm';
 import MaturityChart from './components/MaturityChart';
-import './App.css'; // Optional: For styling
+import './App.css'; // Import the CSS file
 
 const App = () => {
-  const [responses, setResponses] = useState(null); // Holds the submitted questionnaire data
+  const [responses, setResponses] = useState(null);
+  const [companyName, setCompanyName] = useState('');
+  const [showWelcomePage, setShowWelcomePage] = useState(true);
 
-  // Function to handle form submission and pass responses to App state
   const handleFormSubmit = (submittedResponses) => {
-    setResponses(submittedResponses); // Store responses
+    setResponses(submittedResponses);
+  };
+
+  const handleCompanyNameSubmit = (e) => {
+    e.preventDefault();
+    setShowWelcomePage(false);
   };
 
   return (
-    <div className="app">
-      {!responses ? (
-        <QuestionnaireForm onSubmit={handleFormSubmit} /> // Pass handleFormSubmit as a prop
+    <div className="App">
+      {showWelcomePage ? (
+        <div className='pop'>
+          <div className="welcome-page">
+            <div className="welcome-container">
+              <h1>Welcome!</h1>
+              <form onSubmit={handleCompanyNameSubmit}>
+                <label>
+                  Company Name:
+                  <input
+                    type="text"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    required
+                  />
+                </label>
+                <button type="submit">Start</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      ) : !responses ? (
+        <QuestionnaireForm onSubmit={handleFormSubmit} />
       ) : (
-        console.log(responses),
-        <MaturityChart responses={responses} /> // Pass the collected responses to MaturityChart
+        <MaturityChart responses={responses} />
       )}
     </div>
   );

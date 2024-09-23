@@ -1,9 +1,11 @@
 import React from 'react';
-
+import calculateScores from '../helpers/calculationScores';
+import questionsData from './questions.json';
 
 const MaturityChart = ({ responses }) => {
-    // Calculate the highest score for all the questions
-    const sectionPercentages = (9 * 3) * 4;
+   const maxScore = calculateScores(questionsData);
+   // Calculate the highest score for all the questions
+    const sectionPercentages = maxScore.totalScore;
 
     // Calculate the total score based on the responses
     let totalPercentage = 0;
@@ -52,10 +54,10 @@ const MaturityChart = ({ responses }) => {
       <h2>Overall Organisational Maturity Score</h2>
       <h3>DORA</h3>
       <div className="score-display">
-      <h4>Lead Time for Changes: {doraLT}</h4>
-      <h4>Deployment Frequency: {doraDF}</h4>
-      <h4>Change Failure Rate: {doraCFR}</h4>
-      <h4>Mean Time to Restore: {doraMTTR}</h4>
+      <h4>Lead Time for Changes: {doraLT} out of {maxScore.doraMetrics.dltfc}</h4>
+      <h4>Deployment Frequency: {doraDF} out of {maxScore.doraMetrics.ddf}</h4>
+      <h4>Change Failure Rate: {doraCFR} out of {maxScore.doraMetrics.dcfr}</h4>
+      <h4>Mean Time to Restore: {doraMTTR} out of {maxScore.doraMetrics.dmttr}</h4>
     </div>
       <h3>Total Score</h3>
       <div className="score-display">

@@ -9,3 +9,10 @@
 1. Run `npm run deploy`
 
 ```
+
+## How to build and run docker image
+
+```
+1. Run `docker build -t do1-rm:latest .`
+2. Run `docker run -p 8080:80 -itd do1-rm:latest`
+```

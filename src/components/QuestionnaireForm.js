@@ -33,7 +33,7 @@ const QuestionnaireForm = ({ onSubmit }) => {
     };
 
     return (
-        <div>
+        <div className='questionare'>
             {questionsData.sections.map((section, secIndex) => (
                 <div key={secIndex} style={{ display: secIndex === sectionIndex ? 'block' : 'none' }}>
                     <h2><strong>Section {secIndex+1}</strong></h2>
@@ -41,6 +41,7 @@ const QuestionnaireForm = ({ onSubmit }) => {
                     {section.questions.map((question, quesIndex) => (
                         <div key={quesIndex}>
                             <label>{question.question}</label>
+                            <p></p>
                             <Select
                                 options={question.options.map((option, index) => ({ value: index, label: option }))}
                                 onChange={(selectedOption) => handleOptionChange(section.sectionTitle, quesIndex, selectedOption)}

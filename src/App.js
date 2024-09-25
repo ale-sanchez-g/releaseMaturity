@@ -24,10 +24,13 @@ const App = () => {
       <div className='pop'>
         <div className="welcome-page">
           <div className="welcome-container">
-            <h1>Welcome!</h1>
+            <h1>DO1 Release Maturity</h1>
+            <p className='fineprint'>
+              This questionnaire will help you assess the maturity of your company's release process.
+            </p>
             <form onSubmit={handleCompanyNameSubmit}>
               <label>
-                Company Name:
+                What is the name of your company?
                 <input
                   type="text"
                   value={companyName}

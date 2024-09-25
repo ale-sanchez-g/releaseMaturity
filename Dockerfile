@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the React app using a lightweight web server
-FROM nginx:alpine AS production
+FROM nginx:1.27-alpine-slim AS production
 
 # Update the package list and install Nginx
 RUN apk update && apk upgrade

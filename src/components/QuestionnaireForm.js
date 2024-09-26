@@ -52,7 +52,9 @@ const QuestionnaireForm = ({ onSubmit }) => {
                     ))}
                 </div>
             ))}
-            <button onClick={handleNextSection}>Next Section</button>
+            {sectionIndex > 0 && <button onClick={() => setSectionIndex(sectionIndex - 1)}>Previous Section</button>}
+            {sectionIndex < questionsData.sections.length - 1 && <button onClick={handleNextSection}>Next Section</button>}
+            {sectionIndex === questionsData.sections.length - 1 && <button onClick={handleNextSection}>Submit</button>}            
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import calculateScores from '../helpers/calculationScores';
-import questionsData from './questions.json';
+import maturityMap from '../helpers/maturityMap'; 
 
 const MaturityChart = ({ responses }) => {
-   const maxScore = calculateScores(questionsData);
+   const maxScore = calculateScores();
    // Calculate the highest score for all the questions
     const sectionPercentages = maxScore.totalScore;
 
@@ -48,16 +48,27 @@ const MaturityChart = ({ responses }) => {
 
     // Calculate the overall percentage
     const overallPercentage = Math.round((totalPercentage / sectionPercentages) * 100);
+    const dltfcMaturity = maturityMap(doraLT, maxScore.doraMetrics.dltfc);
+    const ddfMaturity = maturityMap(doraDF, maxScore.doraMetrics.ddf);
+    const dcfrMaturity = maturityMap(doraCFR, maxScore.doraMetrics.dcfr);
+    const dmttrMaturity = maturityMap(doraMTTR, maxScore.doraMetrics.dmttr);
 
   return (
     <div className="maturity-chart">
       <h2>Overall Organisational Maturity Score</h2>
       <h3>DORA</h3>
       <div className="score-display">
-      <h4>Lead Time for Changes: {doraLT} out of {maxScore.doraMetrics.dltfc}</h4>
-      <h4>Deployment Frequency: {doraDF} out of {maxScore.doraMetrics.ddf}</h4>
-      <h4>Change Failure Rate: {doraCFR} out of {maxScore.doraMetrics.dcfr}</h4>
-      <h4>Mean Time to Restore: {doraMTTR} out of {maxScore.doraMetrics.dmttr}</h4>
+      <h4>Lead Time for Changes is <strong>{dltfcMaturity}</strong>:</h4>
+      <h4>{doraLT} out of {maxScore.doraMetrics.dltfc}</h4>
+
+      <h4>Deployment Frequency is <strong>{ddfMaturity}</strong>:</h4>
+      <h4>{doraDF} out of {maxScore.doraMetrics.ddf}</h4>
+
+      <h4>Change Failure Rate is <strong>{dcfrMaturity}</strong>:</h4>
+      <h4>{doraCFR} out of {maxScore.doraMetrics.dcfr}</h4>
+
+      <h4>Mean Time to Restore is <strong>{dmttrMaturity}</strong>:</h4>
+      <h4>{doraMTTR} out of {maxScore.doraMetrics.dmttr}</h4>
     </div>
       <h3>Total Score</h3>
       <div className="score-display">

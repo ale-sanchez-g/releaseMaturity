@@ -102,15 +102,15 @@
             "doraMetric": "Change Failure Rate"
           },
           {
-            "question": "How robust is your rollback strategy?",
+            "question": "How long does it take you to roll back fail change?",
             "scoreRange": [0, 5],
-            "options": ["No strategy", "Minimal", "Basic", "Advanced", "Fully automated"],
+            "options": ["More than a week", "Between 2-3 days", "Less than 1 day", "Less than 1 hour", "Minutes"],
             "doraMetric": "Mean Time to Restore"
           },
           {
-            "question": "Do you have automated testing and monitoring in place to detect failures early in Production?",
+            "question": "Do you have Synthetic monitoring in Production?",
             "scoreRange": [0, 5],
-            "options": ["None", "Minimal", "Partial", "Mostly", "Fully automated"],
+            "options": ["None", "Find issues when customers complain", "Only for critical systems", "For most services", "For all services"],
             "doraMetric": "Mean Time to Restore"
           }
         ]

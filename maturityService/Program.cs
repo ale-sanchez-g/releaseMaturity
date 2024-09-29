@@ -1,12 +1,18 @@
 using Amazon.S3;
 using Amazon;
 using Amazon.Extensions.NETCore.Setup;
+using SimpleMicroservice.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Register AWS S3 service
 builder.Services.AddAWSService<IAmazonS3>();
+
+// Register S3Service
+builder.Services.AddScoped<S3Service>();
 
 // Configure CORS (if not already configured)
 builder.Services.AddCors(options =>
@@ -52,29 +58,32 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+var dorametrics = new[]
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    "Mean Time to Restore",
+    "Change Failure Rate",
+    "Deployment Frequency",
+    "Lead Time for Changes"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/DoraMetrics", () =>
 {
     var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
+        new DoraMetrics
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
+            dorametrics[Random.Shared.Next(dorametrics.Length)]
         ))
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast")
+.WithName("GetDoraMetrics")
 .WithOpenApi();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+record DoraMetrics(DateOnly Date, int TemperatureC, string? Metric)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

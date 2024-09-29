@@ -1,6 +1,6 @@
 @maturityService_HostAddress = http://localhost:5114
 
-GET {{maturityService_HostAddress}}/weatherforecast/
+GET {{maturityService_HostAddress}}/DoraMetrics/
 Accept: application/json
 
 ###

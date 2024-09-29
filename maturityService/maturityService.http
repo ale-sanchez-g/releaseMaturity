@@ -1,0 +1,6 @@
+@maturityService_HostAddress = http://localhost:5114
+
+GET {{maturityService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

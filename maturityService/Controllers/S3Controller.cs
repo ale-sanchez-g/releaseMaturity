@@ -26,7 +26,7 @@ namespace SimpleMicroservice.Controllers
 
             using (var stream = file.OpenReadStream())
             {
-                var result = await _s3Service.UploadFileAsync("your-bucket-name", file.FileName, stream);
+                var result = await _s3Service.UploadFileAsync("maturity-service-bucket", file.FileName, stream);
                 return Ok(new { ETag = result });
             }
         }

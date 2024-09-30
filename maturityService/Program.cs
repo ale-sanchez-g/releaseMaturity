@@ -1,9 +1,20 @@
+using dotenv.net;
 using Amazon.S3;
 using Amazon;
 using Amazon.Extensions.NETCore.Setup;
 using SimpleMicroservice.Services;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load environment variables from .env file
+DotEnv.Load();
+
+// Check if .env.local file exists and load it if present
+if (File.Exists(".env.local"))
+{
+    DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { ".env.local" }));
+}
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -72,7 +83,7 @@ app.MapGet("/DoraMetrics", () =>
         new DoraMetrics
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
+            Random.Shared.Next(0, 32),
             dorametrics[Random.Shared.Next(dorametrics.Length)]
         ))
         .ToArray();
@@ -83,7 +94,7 @@ app.MapGet("/DoraMetrics", () =>
 
 app.Run();
 
-record DoraMetrics(DateOnly Date, int TemperatureC, string? Metric)
+record DoraMetrics(DateOnly Date, int DoraMetricScore, string? Metric)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public DoraMetrics() : this(default!, default!, default!) { }
 }

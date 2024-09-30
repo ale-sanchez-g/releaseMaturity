@@ -51,6 +51,10 @@
               "target": "Package",
               "version": "[3.7.403.5, )"
             },
+            "LaunchDarkly.ServerSdk": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.6, )"

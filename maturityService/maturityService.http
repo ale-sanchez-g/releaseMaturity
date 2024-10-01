@@ -3,4 +3,8 @@
 GET {{maturityService_HostAddress}}/DoraMetrics/
 Accept: application/json
 
+POST {{maturityService_HostAddress}}/api/s3/upload
+Content-Type: multipart/form-data
+Content-Disposition: form-data; name="file"; filename="C:\Users\mohamed\Downloads\test.txt"
+
 ###

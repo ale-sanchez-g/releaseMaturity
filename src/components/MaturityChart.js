@@ -3,10 +3,9 @@ import calculateScores from '../helpers/calculationScores';
 import maturityMap from '../helpers/maturityMap'; 
 
 const MaturityChart = ({ responses }) => {
-   const maxScore = calculateScores();
+  const maxScore = calculateScores();
    // Calculate the highest score for all the questions
     const sectionPercentages = maxScore.totalScore;
-
     // Calculate the total score based on the responses
     let totalPercentage = 0;
     Object.keys(responses).forEach(sectionKey => {
@@ -53,6 +52,7 @@ const MaturityChart = ({ responses }) => {
     const dcfrMaturity = maturityMap(doraCFR, maxScore.doraMetrics.dcfr);
     const dmttrMaturity = maturityMap(doraMTTR, maxScore.doraMetrics.dmttr);
 
+
   return (
     <div className="maturity-chart">
       <h2>Overall Organisational Maturity Score</h2>
@@ -84,7 +84,21 @@ const MaturityChart = ({ responses }) => {
         </div>
       </div>
         <button onClick={() => window.location.reload()}>Restart Questionnaire</button>
-      </div>
+        <h2>Questions and Answers</h2>
+         {Object.keys(responses).map(sectionKey => (
+            <div key={sectionKey}>
+              <p>----</p>
+               <h4><strong>Section: {sectionKey}</strong></h4>
+               {Object.values(responses[sectionKey]).map((question, index) => (
+                  <div key={index}>
+                     <p><strong>Q:</strong> {question.question}</p>
+                     <p><strong>A:</strong> {question.answer}</p>
+                  </div>
+               ))}
+            </div>
+         ))}
+    </div>
+      
   );
 };
 

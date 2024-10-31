@@ -17,7 +17,9 @@ const QuestionnaireForm = ({ onSubmit }) => {
                 ...responses[sectionTitle],
                 [questionIndex]: {
                     value: selectedOption.value,
-                    doraMetric: doraMetric
+                    doraMetric: doraMetric,
+                    question: question.question,
+                    answer: selectedOption.label
                 }
             }
         });

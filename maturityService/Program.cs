@@ -34,6 +34,12 @@ ConfigureServices(builder.Services, ldClient);
 
 var app = builder.Build();
 
+// Create a Context object with the required parameters
+var context = LaunchDarkly.Sdk.Context.Builder("default-user").Build();
+
+// Check the feature flag
+var showMetrics = ldClient.BoolVariation("testFlag", context, false);
+
 // Configure middleware
 ConfigureMiddleware(app, ldClient);
 
@@ -104,9 +110,9 @@ void ConfigureMiddleware(WebApplication app, ILdClient ldClient)
         "Lead Time for Changes"
     };
 
-    app.MapGet("/DoraMetrics", () =>
+    _ = app.MapGet("/DoraMetrics", () =>
     {
-        var forecast =  Enumerable.Range(1, 5).Select(index =>
+        var forecast = Enumerable.Range(1, 5).Select(index =>
             new DoraMetrics
             (
                 DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -114,7 +120,17 @@ void ConfigureMiddleware(WebApplication app, ILdClient ldClient)
                 dorametrics[Random.Shared.Next(dorametrics.Length)]
             ))
             .ToArray();
-        return forecast;
+        var metrics = Enumerable.Range(1, 4).Select(index =>
+            new Metrics
+            (
+                dorametrics[Random.Shared.Next(dorametrics.Length)],
+                Random.Shared.Next(0, 32)
+            ))
+            .ToArray();
+
+        var jsonResponse = !showMetrics ? metrics.Cast<object>().ToArray() : forecast.Cast<object>().ToArray();
+
+        return jsonResponse;
     })
     .WithName("GetDoraMetrics")
     .WithOpenApi();

@@ -32,3 +32,26 @@
 3. Open a browser and navigate to `https://localhost:3000/swagger` to view the swagger documentation.
 
 
+## How to run the dotnet service locally
+
+1. Navigate to the `maturityService` directory:
+   ```sh
+   cd maturityService
+   ```
+
+2. Restore the dependencies:
+   ```sh
+   dotnet restore
+   ```
+
+3. Build the project:
+   ```sh
+   dotnet build
+   ```
+
+4. Run the project:
+   ```sh
+   dotnet run
+   ```
+
+5. Open a browser and navigate to `https://localhost:5001/swagger` to view the swagger documentation. (Note: The port number may vary depending on the environment)
